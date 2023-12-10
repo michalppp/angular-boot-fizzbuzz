@@ -1,0 +1,11 @@
+
+<div>
+		<label for="upperRange">Enter Upper Range</label>
+	<div>
+		<input type="number" 
+				min="1" max="999"
+				name="upperRange" id="upperRange" 
+				[(ngModel)]="upperRange" (input)="onInputChange()" value="{{upperRange}}">
+	</div>
+	{{fizzBuzz}}
+</div>
