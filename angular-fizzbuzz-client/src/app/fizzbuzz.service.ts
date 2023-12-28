@@ -13,7 +13,8 @@ export class FizzbuzzService {
 
   fizzbuzz(upperRange: number) : Observable<string>  {
     const params = new HttpParams().set('upperRange', upperRange);
-    const url : string =  "http://localhost:8080/fizzbuzz";
+    const url : string =  'http://localhost:8080/fizzbuzz';
+    const options = { params: params,  responseType: 'text' };  
     return this.http.get(url, { params: params,  responseType: 'text' });
   }
 }

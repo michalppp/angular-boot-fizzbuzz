@@ -1,11 +1,24 @@
 
 <div>
-		<label for="upperRange">Enter Upper Range</label>
+		<label for="upperRange">Enter Upper Range (1..999)</label>
 	<div>
-		<input type="number" 
-				min="1" max="999"
+		<input  
+				type="number" 
+				[min]="MIN_UPPER_RANGE" 
+				[max]="MAX_UPPER_RANGE" 
+				required
 				name="upperRange" id="upperRange" 
-				[(ngModel)]="upperRange" (input)="onInputChange()" value="{{upperRange}}">
+				[(ngModel)]="upperRange" 
+				(input)="onInputChange()" 
+				value="{{upperRange}}"
+				#upperRangeInput="ngModel">
 	</div>
-	{{fizzBuzz}}
+	<div id="result">{{fizzBuzz}}</div>
+	
+
+	<div class="error">
+		<div *ngIf="upperRangeInput.errors?.['required']">Upper range is required.</div>
+		<div *ngIf="upperRangeInput.errors?.['min']">Upper range starting from {{MIN_UPPER_RANGE}}.</div>
+		<div *ngIf="upperRangeInput.errors?.['max']">Upper range up to {{MAX_UPPER_RANGE}}.</div>
+	</div>
 </div>
